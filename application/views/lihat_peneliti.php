@@ -41,7 +41,7 @@
                             </div>
 							
 							<?php echo anchor('antara/action','Cetak Excel',array('class'=>'btn btn-success btn-sm')) ?>
-							<?php echo anchor('Laporanpdf_antara/cetakpdf','Cetak Pdf',array('class'=>'btn btn-danger btn-sm')) ?>
+							
 							
 							
 							<li>	<?php echo anchor('antara/grafik_fakultas','Grafik berdasarkan Fakultas') ?> </li>

@@ -4,7 +4,7 @@
 	
     <div class="clearfix" ></div>
     <div class="navbar" style="background-color:#1E90FF"><center><footer style="color:white"><b>(PUSAT PENELITIAN UIN BANDUNG) 
-					<br>2018</b>
+					<br>2019</b>
 	</footer></center> </div>
 </section>
 </body>
@@ -26,4 +26,27 @@
     <script src="<?php echo base_url() ?>/assets/js/morris/morris.js"></script>
     <!-- Custom Js -->
     <script src="<?php echo base_url() ?>/assets/js/custom-scripts.js"></script>
+	
+	<!-- jQuery Version 1.11.0 -->
+ <script src="<?php echo base_url() ?>assets/jquery-1.11.0.js"></script>
+
+
+<!--file include Bootstrap js dan datepickerbootstrap.js-->
+
+<script src="<?php echo base_url(); ?>assets/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="<?php echo base_url()?>assets/date_picker_bootstrap/js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
+<script type="text/javascript" src="<?php echo base_url()?>assets/date_picker_bootstrap/js/locales/bootstrap-datetimepicker.id.js"charset="UTF-8"></script>
+				<script type="text/javascript">
+ $('.datepicker').datetimepicker({
+        language:  'id',
+        weekStart: 1,
+        todayBtn:  1,
+  autoclose: 1,
+  todayHighlight: 1,
+  startView: 2,
+  minView: 2,
+  forceParse: 0
+    });
+</script> 
 </html>

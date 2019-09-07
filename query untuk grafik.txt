@@ -1,0 +1,39 @@
+--Grafik Dosen yang Daftar Proposal per-Fakultas--
+usuludin  = SELECT COUNT(nama_dosen) FROM pengajuan where id_fak='3'
+tarbiyah  = SELECT COUNT(nama_dosen) FROM pengajuan where id_fak='4'
+syarkum   = SELECT COUNT(nama_dosen) FROM pengajuan where id_fak='5'
+fidkom    = SELECT COUNT(nama_dosen) FROM pengajuan where id_fak='6'
+sastra    = SELECT COUNT(nama_dosen) FROM pengajuan where id_fak='7'
+psikologi = SELECT COUNT(nama_dosen) FROM pengajuan where id_fak='8'
+saintek   = SELECT COUNT(nama_dosen) FROM pengajuan where id_fak='9'
+fisip     = SELECT COUNT(nama_dosen) FROM pengajuan where id_fak='10'
+
+--Grafik Jumlah Proposal per-Fakultas--
+usuludin  = SELECT COUNT(file_prop) FROM pengajuan where file_prop='ada' and id_fak='3'
+tarbiyah  = SELECT COUNT(file_prop) FROM pengajuan where file_prop='ada' and id_fak='4'
+syarkum   = SELECT COUNT(file_prop) FROM pengajuan where file_prop='ada' and id_fak='5'
+fidkom    = SELECT COUNT(file_prop) FROM pengajuan where file_prop='ada' and id_fak='6'
+sastra    = SELECT COUNT(file_prop) FROM pengajuan where file_prop='ada' and id_fak='7'
+psikologi = SELECT COUNT(file_prop) FROM pengajuan where file_prop='ada' and id_fak='8'
+saintek   = SELECT COUNT(file_prop) FROM pengajuan where file_prop='ada' and id_fak='9'
+fisip     = SELECT COUNT(file_prop) FROM pengajuan where file_prop='ada' and id_fak='10'
+
+--Grafik Dosen yang sudah daftar Laporan Antara perFakultas--
+usuludin  = SELECT COUNT(nama_dosen) FROM laporan where id_fak='3'
+tarbiyah  = SELECT COUNT(nama_dosen) FROM laporan where id_fak='4'
+syarkum   = SELECT COUNT(nama_dosen) FROM laporan where id_fak='5'
+fidkom    = SELECT COUNT(nama_dosen) FROM laporan where id_fak='6'
+sastra    = SELECT COUNT(nama_dosen) FROM laporan where id_fak='7'
+psikologi = SELECT COUNT(nama_dosen) FROM laporan where id_fak='8'
+saintek   = SELECT COUNT(nama_dosen) FROM laporan where id_fak='9'
+fisip     = SELECT COUNT(nama_dosen) FROM laporan where id_fak='10'
+
+--Grafik Dosen yang Sudah Laporan Akhir per-Fakultas--
+usuludin  = SELECT COUNT(nama_dosen) FROM lapakhir where id_fak='3'
+tarbiyah  = SELECT COUNT(nama_dosen) FROM lapakhir where id_fak='4'
+syarkum   = SELECT COUNT(nama_dosen) FROM lapakhir where id_fak='5'
+fidkom    = SELECT COUNT(nama_dosen) FROM lapakhir where id_fak='6'
+sastra    = SELECT COUNT(nama_dosen) FROM lapakhir where id_fak='7'
+psikologi = SELECT COUNT(nama_dosen) FROM lapakhir where id_fak='8'
+saintek   = SELECT COUNT(nama_dosen) FROM lapakhir where id_fak='9'
+fisip     = SELECT COUNT(nama_dosen) FROM lapakhir where id_fak='10'

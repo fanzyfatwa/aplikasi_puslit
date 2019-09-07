@@ -25,8 +25,21 @@
                             <div class="panel-body">
                                 <?php echo form_open('pengajuan/awal'); ?>
 								<div class="form-group">
+                                    <label>Tahun</label>
+                                    <select name="tahun" class="form-control">
+                                        <option value="2016">2016</option>
+                                        <option value="2017">2017</option>
+                                        <option value="2018">2018</option>
+                                        <option value="2019">2019</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
                                     <label>Nomor Registrasi</label>
                                     <input type="text" class="form-control" name="no_regis">
+                                </div>
+								<div class="form-group">
+                                    <label>Id Peneliti</label>
+                                    <input type="text" class="form-control" name="id_peneliti">
                                 </div>
 								<div class="form-group">
                                     <label>Nama Dosen</label>
@@ -38,7 +51,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label>NIDN</label>
-                                    <input type="text" class="form-control" name="nidn">
+                                    <input type="text" class="form-control" name="nidn" placeholder="Kosongkan jika tidak ada">
                                 </div>
 								<div class="form-group">
 										<b>Fakultas</b><br/>

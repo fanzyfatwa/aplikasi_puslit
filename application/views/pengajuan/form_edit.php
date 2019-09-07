@@ -4,7 +4,20 @@
                     </div>
                 </div> 
                 <!-- /. ROW  -->
-
+<script src="<?php echo base_url(); ?>assets/js/jquery.min.js"></script>
+<script>
+    function get_jurusan(){
+        var id_fak = $("#id_fak").val();
+        $.ajax({
+            type: 'POST',
+            url: "<?php echo site_url('pengajuan/get_jurusan'); ?>",
+            data: "id_fak="+id_fak,
+            success: function(msg){
+                $("#div_jurusan").html(msg);
+            }
+        });
+    }
+    </script>
                 <div class="row">
                     <div class="col-md-12">
                         <div class="panel panel-default">
@@ -12,24 +25,51 @@
                                 <?php echo form_open('pengajuan/edit'); ?>
                                 <input type="hidden" value="<?php echo $record['id_pengajuan']?>" name="id_pengajuan">
                                 <div class="form-group">
+                                    <label>Tahun</label>
+                                    <select name="tahun" class="form-control">
+                                        <option value="2016">2016</option>
+                                        <option value="2017">2017</option>
+                                        <option value="2018">2018</option>
+                                        <option value="2019">2019</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
                                     <label>Nomor Registrasi</label>
-                                    <input type="text" class="form-control"  name="no_regis" value="<?php echo $record['no_regis']?>">
+                                    <input type="text" class="form-control"  name="no_regis" readonly value="<?php echo $record['no_regis']?>">
+                                </div>
+                                <div class="form-group">
+                                    <label>Id Peneliti</label>
+                                    <input type="text" class="form-control" name="id_peneliti" value="<?php echo $record['id_peneliti']?>">
                                 </div>
 								<div class="form-group">
                                     <label>Nama Dosen</label>
-                                    <input type="text" class="form-control"  name="nama_dosen" value="<?php echo $record['nama_dosen']?>">
+                                    <input type="text" class="form-control"  name="nama_dosen"  value="<?php echo $record['nama_dosen']?>">
                                 </div>
                                <div class="form-group">
                                     <label>NIP</label>
-                                    <input type="text" class="form-control" name="nip" value="<?php echo $record['nip']?>">
+                                    <input type="text" class="form-control" name="nip"  value="<?php echo $record['nip']?>">
                                 </div>
                                 <div class="form-group">
                                     <label>NIDN</label>
                                     <input type="text" class="form-control" name="nidn" value="<?php echo $record['nidn']?>">
                                 </div>
-                                <div class="form-group">
-                                    <label>Jurusan / Fakultas</label>
-                                    <input type="text" class="form-control"  name="jurusan" value="<?php echo $record['jurusan']?>">
+								<div class="form-group">
+                                        <b>Fakultas</b><br/>
+                                        <select name="id_fak" id="id_fak" onchange="get_jurusan();" class="form-control">
+                                            <option value="">--Pilih--</option>
+                                            <?php
+                                                foreach($fakultas as $k){
+                                                    echo "<option value='".$k->id_fak."'>".$k->namafakultas."</option>";
+                                                }
+                                            ?>
+                                        </select>
+                                        </div>  
+                                    <div class="form-group">
+                                        <b>Jurusan</b>
+                                        <div id='div_jurusan'>
+                                            <select name="id_jur" id="id_jur" class="form-control">
+                                            </select>
+                                        </div>
                                 </div>
 								<div class="form-group">
 									<label>File Proposal</label> <br>

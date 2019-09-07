@@ -18,29 +18,27 @@
        if(isset($_POST['submit'])){
             // proses data
             $id_antara  = $this->input->post('id_antara',true);
-			$no_regis = $this->input->post('no_regis',true);
+			      $no_regis = $this->input->post('no_regis',true);
             $nama_dosen   =  $this->input->post('nama_dosen',true);
             $nip       =  $this->input->post('nip',true);
             $nidn   =  $this->input->post('nidn',true);
-			$fakultas    = $this->input->post('fakultas',true);
-            $jurusan    = $this->input->post('jurusan',true);
+			      $id_fak    = $this->input->post('id_fak',true);
+            $id_jur  = $this->input->post('id_jur',true);
             $logbook   =  $this->input->post('logbook',true);
-			$lap_uang60   =  $this->input->post('lap_uang60',true);
-			$naskah   =  $this->input->post('naskah',true);
-			$artikel   =  $this->input->post('artikel',true);
+			      $lap_uang60   =  $this->input->post('lap_uang60',true);
+			      $naskah   =  $this->input->post('naskah',true);
             $hki   =  $this->input->post('hki',true);
             $catatan   =  $this->input->post('catatan',true);
             $data       =  array(   'id_antara'=>$id_antara,
                                     'no_regis'=>$no_regis,
-									'nama_dosen'=>$nama_dosen,
+								                  	'nama_dosen'=>$nama_dosen,
                                     'nip'=>$nip,
                                     'nidn'=>$nidn,
-									'fakultas'=>$fakultas,
-                                    'jurusan'=>$jurusan,
-									'logbook'=>$logbook,
-									'lap_uang60'=>$lap_uang60,
-									'naskah'=>$naskah,
-                                    'artikel'=>$artikel,
+									                  'id_fak'=>$id_fak,
+                                    'id_jur'=>$id_jur,
+									                  'logbook'=>$logbook,
+									                  'lap_uang60'=>$lap_uang60,
+									                  'naskah'=>$naskah,
                                     'hki'=>$hki,
                                     'catatan'=>$catatan);
             $this->db->insert('laporan',$data);
@@ -61,12 +59,11 @@
             $nama_dosen   =  $this->input->post('nama_dosen',true);
             $nip       =  $this->input->post('nip',true);
             $nidn   =  $this->input->post('nidn',true);
-			$fakultas    = $this->input->post('fakultas',true);
-            $jurusan    = $this->input->post('jurusan',true);
+			$id_fak    = $this->input->post('id_fak',true);
+            $id_jur    = $this->input->post('id_jur',true);
             $logbook   =  $this->input->post('logbook',true);
             $lap_uang60   =  $this->input->post('lap_uang60',true);
             $naskah   =  $this->input->post('naskah',true);
-            $artikel   =  $this->input->post('artikel',true);
             $hki   =  $this->input->post('hki',true);
             $catatan   =  $this->input->post('catatan',true);
             
@@ -74,12 +71,11 @@
                                     'nama_dosen'=>$nama_dosen,
                                     'nip'=>$nip,
                                     'nidn'=>$nidn,
-									'fakultas'=>$fakultas,
-                                    'jurusan'=>$jurusan,
+									'id_fak'=>$id_fak,
+                                    'id_jur'=>$id_jur,
 									'logbook'=>$logbook,
 									'lap_uang60'=>$lap_uang60,
 									'naskah'=>$naskah,
-                                    'artikel'=>$artikel,
                                     'hki'=>$hki,
                                     'catatan'=>$catatan);
             
@@ -98,9 +94,16 @@
     function delete()
     {
         $id_antara=  $this->uri->segment(3);
-        $this->db->where('id_antara',$id_antara);
+		$hapusantara = $this->model_antara->hapusantara($id_antara);
+		if($hapusantara){
+			echo "<script>alert('data berhasil dihapus'); </script>";
+				redirect('antara','refresh');
+		} else{
+			echo "<script>alert('data gagal dihapus'); </script>";
+		}
+        /*$this->db->where('id_antara',$id_antara);
         $this->db->delete('laporan');
-        redirect('antara');
+        redirect('antara');*/
     }
 	public function cetakexcel(){
 
@@ -117,7 +120,7 @@
 
   $laporan->setActiveSheetIndex(0);
 
-  $table_columns = array("Nama Dosen","NIP", "NIDN",  "Fakultas", "Jurusan", "Logbook", "Laporan Keuangan 60%", "Draf Naskah", "Progres Artikel", "Progres HKI", "Catatan");
+  $table_columns = array("Nama Dosen","NIP", "NIDN",  "Fakultas", "Jurusan", "Logbook", "Laporan Keuangan 60%", "Draf Naskah", "Progres HKI", "Catatan");
 
   $column = 0;
 
@@ -136,12 +139,11 @@
    $laporan->getActiveSheet()->setCellValueByColumnAndRow(0, $excel_row, $row->nama_dosen);
    $laporan->getActiveSheet()->setCellValueByColumnAndRow(1, $excel_row, $row->nip);
    $laporan->getActiveSheet()->setCellValueByColumnAndRow(2, $excel_row, $row->nidn);
-   $laporan->getActiveSheet()->setCellValueByColumnAndRow(3, $excel_row, $row->fakultas);
-   $laporan->getActiveSheet()->setCellValueByColumnAndRow(3, $excel_row, $row->jurusan);
-   $laporan->getActiveSheet()->setCellValueByColumnAndRow(4, $excel_row, $row->logbook);
-   $laporan->getActiveSheet()->setCellValueByColumnAndRow(5, $excel_row, $row->lap_uang60);
-   $laporan->getActiveSheet()->setCellValueByColumnAndRow(6, $excel_row, $row->naskah);
-   $laporan->getActiveSheet()->setCellValueByColumnAndRow(7, $excel_row, $row->artikel);
+   $laporan->getActiveSheet()->setCellValueByColumnAndRow(3, $excel_row, $row->namafakultas);
+   $laporan->getActiveSheet()->setCellValueByColumnAndRow(4, $excel_row, $row->namajurusan);
+   $laporan->getActiveSheet()->setCellValueByColumnAndRow(5, $excel_row, $row->logbook);
+   $laporan->getActiveSheet()->setCellValueByColumnAndRow(6, $excel_row, $row->lap_uang60);
+   $laporan->getActiveSheet()->setCellValueByColumnAndRow(7, $excel_row, $row->naskah);
    $laporan->getActiveSheet()->setCellValueByColumnAndRow(8, $excel_row, $row->hki);
    $laporan->getActiveSheet()->setCellValueByColumnAndRow(9, $excel_row, $row->catatan);
    $excel_row++;
@@ -153,31 +155,10 @@
   $laporan_writer->save('php://output');
  }
 
- public function grafik()
+ function grafik_antara_fak()
     {
-        $data['laporan'] = $this->model_antara->grafik();
-        $this->load->view('grafik_antara', $data);
-    }
-
-	public function grafik_fakultas()
-    {
-        $data['laporan'] = $this->model_antara->grafik();
-        $this->load->view('grafik/grafik_antara_fakultas', $data);
-    }
-	public function grafik_dokumen()
-    {
-        $data['laporan'] = $this->model_antara->grafik();
-        $this->load->view('grafik/grafik_antara_dokumen', $data);
-    }
-	public function grafik_artikel()
-    {
-        $data['laporan'] = $this->model_antara->grafik();
-        $this->load->view('grafik/grafik_antara_p-artikel', $data);
-    }
-	public function grafik_hki()
-    {
-        $data['laporan'] = $this->model_antara->grafik();
-        $this->load->view('grafik/grafik_antara_p-hki', $data);
+        $x['data']=$this->model_antara->data_antara_fak();
+        $this->load->view('grafik/grafik_antara_fak',$x);
     }
 	}
 	
